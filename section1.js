@@ -23,3 +23,29 @@ console.log(obj["key"]); // => "value"
 
 
 // 演算子の対象のことをオペランドという
+
+// 厳密等価演算子
+console.log(1 === 1); // => true
+console.log(1 === "1"); // => false
+
+
+const objA = {};
+const objB = {};
+// 生成されたオブジェクトは異なる参照となる 厳密には異なる。
+console.log(objA === objB); // => false
+
+// 注意
+// 文字列を数値に変換してから比較
+console.log(1 == "1"); // => true
+// "01"を数値にすると`1`となる
+console.log(1 == "01"); // => true
+
+// 便利な三項演算子
+const str = "森森木森森";
+if (str.includes("木")) {
+  console.log("木を見つけました");
+}
+
+// not演算子
+console.log(!false); // => true
+
