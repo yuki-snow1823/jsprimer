@@ -151,3 +151,15 @@ const obj = {
   }
 };
 console.log(obj.method()); // => "this is method"
+
+
+// 式と文
+
+// 関数式をread変数へ代入
+const read = function () {};
+
+// 文：if文とブロック文の組み合わせ
+if (true) {
+  console.log("文1");
+  console.log("文2");
+}
