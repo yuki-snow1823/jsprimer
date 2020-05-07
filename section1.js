@@ -185,3 +185,94 @@ function getECMAScriptName(version) {
 getECMAScriptName("ES6"); // => "ECMAScript 2015"
 
 // break文の多用があるなら、書き換えるべき方法を考える
+
+
+// ループと反復処理
+// while文で書かないほうがいいことも多い、安直に使わないこと
+
+// 最初に必ず実行文を処理して欲しい場合
+do {
+  実行する文;
+} while (条件式);
+
+
+// 初期化、条件、条件まで行う処理
+for (let i = 0; i < 10; i++) {
+  total += i + 1; // 1から10の値をtotalに加算している
+}
+console.log(total); // => 55
+
+const array = [1, 2, 3];
+array.forEach(currentValue => {
+  // 配列の要素ごとに呼び出される処理
+  currentValue += 1
+});
+
+console.log(currentValue)
+// ここでいうところの、currentValueがrubyのeachでいうブロック変数みたいなもの
+
+// 引数の`num`が偶数ならtrueを返す
+function isEven(num) {
+  return num % 2 === 0;
+}
+// 引数の`numbers`に偶数が含まれているならtrueを返す
+function isEvenIncluded(numbers) {
+  let isEvenIncluded = false;
+  for (let i = 0; i < numbers.length; i++) {
+    const num = numbers[i];
+    if (isEven(num)) {
+      isEvenIncluded = true;
+      break;
+    }
+  }
+  return isEvenIncluded;
+}
+const array = [1, 5, 10, 15, 20];
+console.log(isEvenIncluded(array)); // => true
+console.log(isEven(2)) // true
+
+
+// 見つけた瞬間処理が終わる
+function isEven(num) {
+  return num % 2 === 0;
+}
+const numbers = [1, 5, 10, 15, 20];
+console.log(numbers.some(isEven)); // => true
+
+
+
+// continueを書くことで、次の処理に進むことができる
+
+// `number`が偶数ならtrueを返す
+function isEven(num) {
+  return num % 2 === 0;
+}
+// `numbers`に含まれている偶数だけを取り出す
+function filterEven(numbers) {
+  const results = [];
+  for (let i = 0; i < numbers.length; i++) {
+    const num = numbers[i];
+    // 偶数ではないなら、次のループへ
+    if (!isEven(num)) {
+      continue;
+    }
+    // 偶数を`results`に追加
+    results.push(num);
+  }
+  return results;
+}
+const array = [1, 5, 10, 15, 20];
+console.log(filterEven(array)); // => [10, 20]
+
+
+// 【重要】trueじゃない要素を省く場合の処理
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+const array = [1, 5, 10, 15, 20];
+console.log(array.filter(isEven)); // => [10, 20]
+
+// 注意
+// 先ほどのfor文やforEachメソッドで数値の合計を返すsum関数の実装は、
+// constではなくletを利用していました。 なぜなら、 constは再代入できない変数を宣言するキーワードであるためです。
