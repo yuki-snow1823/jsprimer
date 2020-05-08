@@ -276,3 +276,123 @@ console.log(array.filter(isEven)); // => [10, 20]
 // 注意
 // 先ほどのfor文やforEachメソッドで数値の合計を返すsum関数の実装は、
 // constではなくletを利用していました。 なぜなら、 constは再代入できない変数を宣言するキーワードであるためです。
+
+
+// オブジェクトはキーと値のセット。
+
+const obj = {
+  name: "Yuki"
+  // key+値= プロパティ
+}
+
+
+// 省略記法
+const name = "名前";
+// `name`というプロパティ名で`name`の変数を値に設定したオブジェクト
+const obj = {
+  name
+};
+console.log(obj); // => { name: "名前" }
+
+// 注意
+// プロパティ名が数字から始まる識別子は利用できない
+// obj .123; // NG
+// プロパティ名にハイフンを含む識別子は利用できない
+// obj.my - prop; // NG
+
+const languages = {
+  ja: "日本語",
+  en: "英語"
+};
+const {
+  ja,
+  en
+} = languages;
+console.log(ja); // => "日本語"
+console.log(en); // => "英語"
+
+// 何をしているか：本来jaというふうにうつだけでは何も出ないが、constで分割代入しつつ定義することで
+// languageオブジェクトのプロパティが対応して代入される
+
+// プロパティの削除について
+const obj = {
+  key1: "value1",
+  key2: "value2"
+};
+// key1プロパティを削除
+delete obj.key1;
+// key1プロパティが削除されている
+console.log(obj); // => { "key2": "value2" }
+
+
+// ネストしてundefinedにプロパティをつけた時に初めてエラーになる
+
+const obj = {};
+obj.hasOwnProperty("プロパティ名"); // true or false
+
+console.log(obj.toString()); // => "[object Object]"
+
+// 列挙した値を配列として返す
+const obj = {
+  "one": 1,
+  "two": 2,
+  "three": 3
+};
+// `Object.keys`はキーの列挙した配列を返す
+console.log(Object.keys(obj)); // => ["one", "two", "three"]
+// `Object.values`は値を列挙した配列を返す
+console.log(Object.values(obj)); // => [1, 2, 3]
+// `Object.entries`は[キー, 値]の配列を返す
+console.log(Object.entries(obj)); // => [["one", 1], ["two", 2], ["three", 3]]
+
+// オブジェクトの合成
+const objectA = {
+  a: "a"
+};
+const objectB = {
+  b: "b"
+};
+const merged = Object.assign({}, objectA, objectB);
+console.log(merged); // => { a: "a", b: "b" }
+
+// ※プロパティが重複した場合
+// `version`のプロパティ名が被っている
+const objectA = {
+  version: "a"
+};
+const objectB = {
+  version: "b"
+};
+const merged = Object.assign({}, objectA, objectB);
+// 後ろにある`objectB`のプロパティで上書きされる
+console.log(merged); // => { version: "b" }
+
+// 便利なスプレッド構文も使える
+
+// `version`のプロパティ名が被っている
+const objectA = {
+  version: "a"
+};
+const objectB = {
+  version: "b"
+};
+const merged = {
+  ...objectA,
+  ...objectB,
+  other: "other"
+};
+// 後ろにある`objectB`のプロパティで上書きされる
+console.log(merged); // => { version: "b", other: "other" }
+
+// オブジェクトの複製に関して
+// 引数の`obj`を浅く複製したオブジェクトを返す
+const shallowClone = (obj) => {
+  return Object.assign({}, obj);
+};
+const obj = {
+  a: "a"
+};
+const cloneObj = shallowClone(obj);
+console.log(cloneObj); // => { a: "a" }
+// オブジェクトを複製しているので、異なるオブジェクトとなる
+console.log(obj === cloneObj); // => false
