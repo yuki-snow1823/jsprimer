@@ -396,3 +396,29 @@ const cloneObj = shallowClone(obj);
 console.log(cloneObj); // => { a: "a" }
 // オブジェクトを複製しているので、異なるオブジェクトとなる
 console.log(obj === cloneObj); // => false
+
+
+// プロトタイプメソッド（難しい）
+
+const obj = {
+  "key": "value"
+};
+// `obj`インスタンスは`Object.prototype`に定義されたものを継承する
+// `obj.toString`は継承した`Object.prototype.toString`を参照している
+console.log(obj.toString === Object.prototype.toString); // => true
+// インスタンスからプロトタイプメソッドを呼び出せる
+console.log(obj.toString()); // => "[object Object]"
+
+ // 事前に定義されているメソッドみたいな感じだと思われる
+ // オブジェクトのインスタンスにtoStringメソッドを定義
+ const customObject = {
+   toString() {
+     return "custom value";
+   }
+ };
+console.log(customObject.toString()); // => "custom value"
+ 
+// ただし
+const obj = {};
+// `obj`というオブジェクト自体に`toString`メソッドが定義されているわけではない
+console.log(obj.hasOwnProperty("toString")); // => false
