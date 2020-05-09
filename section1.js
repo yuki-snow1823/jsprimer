@@ -399,3 +399,40 @@ console.log(obj7 === cloneObj); // => false
 // →再定義できる
 
 
+// 配列
+const array8 = ["one", "two", "three"];
+// `array`にはインデックスが100の要素は定義されていない
+console.log(array8[100]); // => undefined
+
+// isArray 配列かどうかを判定できる
+
+// 分割代入する方法
+const array9 = ["one", "two", "three"];
+const [first, second, third] = array9;
+console.log(first); // => "one"
+console.log(second); // => "two"
+console.log(third); // => "three"
+
+// 検索に使えるメソッド
+// arrayIndex("文字")：文字のインデックスが何番か出力する
+const array11 = ["Java", "JavaScript", "Ruby"];
+const indexOfJS = array11.indexOf("JavaScript");
+console.log(indexOfJS); // => 1
+console.log(array11[indexOfJS]); // => "JavaScript"
+// "JS" という要素はないため `-1` が返される
+console.log(array11.indexOf("JS")); // => -1
+
+// 【オブジェクトは持っている要素が同じでも違うものと考えるから、検索に引っかからない例】
+const obj10 = {
+  key: "value"
+};
+const array12 = ["A", "B", obj10];
+console.log(array12.indexOf({
+  key: "value"
+})); // => -1
+// リテラルは新しいオブジェクトを作るため、異なるオブジェクトだと判定される
+console.log(obj10 === {
+  key: "value"
+}); // => false
+// 等価のオブジェクトを検索してインデックスを返す
+console.log(array12.indexOf(obj10)); // => 2
