@@ -436,3 +436,10 @@ console.log(obj10 === {
 }); // => false
 // 等価のオブジェクトを検索してインデックスを返す
 console.log(array12.indexOf(obj10)); // => 2
+
+// Array.flat(下げる数)：配列の次元を下げる
+
+const array13 = [1, 2, 3];
+console.log(array13.length); // => 3
+// `const`で宣言された変数には再代入できない
+array13 = []; // TypeError: invalid assignment to const `array' が発生
