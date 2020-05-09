@@ -83,9 +83,9 @@ function 関数名(num = defaultOne, val = defaultVal) {
 
 // 引数が多いとはみ出たものは無視される
 // 便利なスプレッド構文
-fn(...array);
+// fn(...array);
 // 次のように書いたのと同じ意味
-fn(array[0], array[1], array[2]);
+// fn(array[0], array[1], array[2]);
 
 // こんな書き方もできる
 // 第1引数のオブジェクトから`id`プロパティを変数`id`として定義する
@@ -119,9 +119,9 @@ console.log(factorial(3)); // => 6
   // 関数を呼び出したときの処理
   // ...
   // return 関数の返す値;
-};
-// const fnC = x => {
-  /* 仮引数が1つのみのときは()を省略可能 */ };
+// };
+// // const fnC = x => {
+//   /* 仮引数が1つのみのときは()を省略可能 */ };
 
 
 // コールバック関数や高階関数など【重要な言葉の意味】
@@ -129,26 +129,27 @@ console.log(factorial(3)); // => 6
 // 引数として渡される関数のことをコールバック関数と呼びます。 
 // 一方、 コールバック関数を引数として使う関数やメソッドのことを高階関数と呼びます。
 
-function 高階関数(コールバック関数) {
-  コールバック関数();
-}
+// function 高階関数(コールバック関数) {
+//   コールバック関数();
+// }
 
 
 // 少し難しいがメソッドにすることもできる
-const obj = {
-  method: function () {
-    return "this is method";
-  }
-};
-console.log(obj.method()); // => "this is method"
-// 式と文
+// const obj = {
+//   method: function () {
+//     return "this is method";
+//   }
+// };
+// console.log(obj.method());
+// => "this is method" オブジェクトのメソッド
 
+
+// 式と文
 // 関数式をread変数へ代入
 const read = function () {};
-
 // 文：if文とブロック文の組み合わせ
 if (true) {
-  console.log("文1");
+  console.log("#152","文1");
   console.log("文2");
 }
 
@@ -179,19 +180,20 @@ getECMAScriptName("ES6"); // => "ECMAScript 2015"
 
 // ループと反復処理
 // while文で書かないほうがいいことも多い、安直に使わないこと
-
 // 最初に必ず実行文を処理して欲しい場合
-do {
-  実行する文;
-} while (条件式);
+// do {
+//   実行する文;
+// } while (条件式);
 
 
 // 初期化、条件、条件まで行う処理
+total = 0
 for (let i = 0; i < 10; i++) {
   total += i + 1; // 1から10の値をtotalに加算している
 }
 console.log(total); // => 55
 
+currentValue = 0
 const array = [1, 2, 3];
 array.forEach(currentValue => {
   // 配列の要素ごとに呼び出される処理
@@ -201,10 +203,13 @@ array.forEach(currentValue => {
 console.log(currentValue)
 // ここでいうところの、currentValueがrubyのeachでいうブロック変数みたいなもの
 
+num = 6
 // 引数の`num`が偶数ならtrueを返す
 function isEven(num) {
   return num % 2 === 0;
 }
+
+// rubyのメソッドという感じ
 // 引数の`numbers`に偶数が含まれているならtrueを返す
 function isEvenIncluded(numbers) {
   let isEvenIncluded = false;
@@ -217,10 +222,10 @@ function isEvenIncluded(numbers) {
   }
   return isEvenIncluded;
 }
-const array = [1, 5, 10, 15, 20];
-console.log(isEvenIncluded(array)); // => true
-console.log(isEven(2)) // true
 
+const array2 = [1, 5, 10, 15, 20];
+console.log(isEvenIncluded(array2)); // => true
+console.log(isEven(2)) // true
 
 // 見つけた瞬間処理が終わる
 function isEven(num) {
@@ -229,14 +234,13 @@ function isEven(num) {
 const numbers = [1, 5, 10, 15, 20];
 console.log(numbers.some(isEven)); // => true
 
-
-
 // continueを書くことで、次の処理に進むことができる
-
 // `number`が偶数ならtrueを返す
 function isEven(num) {
   return num % 2 === 0;
 }
+
+// 【重要】
 // `numbers`に含まれている偶数だけを取り出す
 function filterEven(numbers) {
   const results = [];
@@ -247,42 +251,40 @@ function filterEven(numbers) {
       continue;
     }
     // 偶数を`results`に追加
+    // rubyみたいにpushが使える
     results.push(num);
   }
   return results;
 }
-const array = [1, 5, 10, 15, 20];
-console.log(filterEven(array)); // => [10, 20]
+const array3 = [1, 5, 10, 15, 20];
+console.log(filterEven(array3)); // => [10, 20]
 
 
 // 【重要】trueじゃない要素を省く場合の処理
 function isEven(num) {
   return num % 2 === 0;
 }
-
-const array = [1, 5, 10, 15, 20];
-console.log(array.filter(isEven)); // => [10, 20]
+const array4 = [1, 5, 10, 15, 20];
+console.log(array4.filter(isEven)); // => [10, 20]
 
 // 注意
 // 先ほどのfor文やforEachメソッドで数値の合計を返すsum関数の実装は、
-// constではなくletを利用していました。 なぜなら、 constは再代入できない変数を宣言するキーワードであるためです。
-
-
+// constではなくletを利用していました。 
+// なぜなら、constは再代入できない変数を宣言するキーワードであるためです。：これはよくわからない。
 // オブジェクトはキーと値のセット。
-
-const obj = {
-  name: "Yuki"
-  // key+値= プロパティ
-}
+// const obj = {
+//   name: "Yuki"
+//   // key+値= プロパティ
+// }
 
 
 // 省略記法
-const name = "名前";
-// `name`というプロパティ名で`name`の変数を値に設定したオブジェクト
-const obj = {
-  name
-};
-console.log(obj); // => { name: "名前" }
+// const name = "名前";
+// // `name`というプロパティ名で`name`の変数を値に設定したオブジェクト
+// const obj = {
+//   name
+// };
+// console.log(obj); // => { name: "名前" }
 
 // 注意
 // プロパティ名が数字から始まる識別子は利用できない
@@ -305,35 +307,32 @@ console.log(en); // => "英語"
 // languageオブジェクトのプロパティが対応して代入される
 
 // プロパティの削除について
-const obj = {
+const obj2 = {
   key1: "value1",
   key2: "value2"
 };
 // key1プロパティを削除
-delete obj.key1;
+delete obj2.key1;
 // key1プロパティが削除されている
-console.log(obj); // => { "key2": "value2" }
-
+console.log(obj2); // => { "key2": "value2" }
 
 // ネストしてundefinedにプロパティをつけた時に初めてエラーになる
-
-const obj = {};
-obj.hasOwnProperty("プロパティ名"); // true or false
-
-console.log(obj.toString()); // => "[object Object]"
+const obj3 = {};
+obj3.hasOwnProperty("プロパティ名"); // true or false
+console.log(obj3.toString()); // => "[object Object]"
 
 // 列挙した値を配列として返す
-const obj = {
+const obj4 = {
   "one": 1,
   "two": 2,
   "three": 3
 };
 // `Object.keys`はキーの列挙した配列を返す
-console.log(Object.keys(obj)); // => ["one", "two", "three"]
+console.log(Object.keys(obj4)); // => ["one", "two", "three"]
 // `Object.values`は値を列挙した配列を返す
-console.log(Object.values(obj)); // => [1, 2, 3]
+console.log(Object.values(obj4)); // => [1, 2, 3]
 // `Object.entries`は[キー, 値]の配列を返す
-console.log(Object.entries(obj)); // => [["one", 1], ["two", 2], ["three", 3]]
+console.log(Object.entries(obj4)); // => [["one", 1], ["two", 2], ["three", 3]]
 
 // オブジェクトの合成
 const objectA = {
@@ -347,68 +346,41 @@ console.log(merged); // => { a: "a", b: "b" }
 
 // ※プロパティが重複した場合
 // `version`のプロパティ名が被っている
-const objectA = {
+const objectC = {
   version: "a"
 };
-const objectB = {
+const objectD = {
   version: "b"
 };
-const merged = Object.assign({}, objectA, objectB);
+// const merged = Object.assign({}, objectC, objectD);
 // 後ろにある`objectB`のプロパティで上書きされる
-console.log(merged); // => { version: "b" }
+// console.log(merged); // => { version: "b" }
 
 // 便利なスプレッド構文も使える
-
 // `version`のプロパティ名が被っている
-const objectA = {
+const objectE = {
   version: "a"
 };
-const objectB = {
+const objectF = {
   version: "b"
 };
-const merged = {
-  ...objectA,
-  ...objectB,
+const merged2 = {
+  ...objectE,
+  ...objectF,
   other: "other"
 };
 // 後ろにある`objectB`のプロパティで上書きされる
-console.log(merged); // => { version: "b", other: "other" }
+console.log(merged2); // => { version: "b", other: "other" }
 
 // オブジェクトの複製に関して
 // 引数の`obj`を浅く複製したオブジェクトを返す
 const shallowClone = (obj) => {
   return Object.assign({}, obj);
 };
-const obj = {
+const obj7 = {
   a: "a"
 };
-const cloneObj = shallowClone(obj);
+const cloneObj = shallowClone(obj7);
 console.log(cloneObj); // => { a: "a" }
 // オブジェクトを複製しているので、異なるオブジェクトとなる
-console.log(obj === cloneObj); // => false
-
-
-// プロトタイプメソッド（難しい）
-
-const obj = {
-  "key": "value"
-};
-// `obj`インスタンスは`Object.prototype`に定義されたものを継承する
-// `obj.toString`は継承した`Object.prototype.toString`を参照している
-console.log(obj.toString === Object.prototype.toString); // => true
-// インスタンスからプロトタイプメソッドを呼び出せる
-console.log(obj.toString()); // => "[object Object]"
-
- // 事前に定義されているメソッドみたいな感じだと思われる
- // オブジェクトのインスタンスにtoStringメソッドを定義
- const customObject = {
-   toString() {
-     return "custom value";
-   }
- };
-console.log(customObject.toString()); // => "custom value"
- 
-// ただし
-const obj = {};
-// `obj`というオブジェクト自体に`toString`メソッドが定義されているわけではない
-console.log(obj.hasOwnProperty("toString")); // => false
+console.log(obj7 === cloneObj); // => false
