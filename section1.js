@@ -439,7 +439,31 @@ console.log(array12.indexOf(obj10)); // => 2
 
 // Array.flat(下げる数)：配列の次元を下げる
 
-const array13 = [1, 2, 3];
-console.log(array13.length); // => 3
-// `const`で宣言された変数には再代入できない
-array13 = []; // TypeError: invalid assignment to const `array' が発生
+// const array13 = [1, 2, 3];
+// console.log(array13.length); // => 3
+// // `const`で宣言された変数には再代入できない
+// array13 = []; // TypeError: invalid assignment to const `array' が発生
+
+
+// 文字列
+
+const multiline = `1行目
+2行目
+3行目`;
+// \n は改行を意味する
+console.log(multiline); // => "1行目\n2行目\n3行目"
+
+// 改行コードは入らない
+
+// 変数展開
+const name2 = "JavaScript";
+console.log(`Hello ${name2}!`); // => "Hello JavaScript!"
+
+const str2 = "文字列";
+// 配列と同じようにインデックスでアクセスできる
+console.log(str2[0]); // => "文"
+console.log(str2[1]); // => "字"
+console.log(str2[2]); // => "列"
+// この文字からビット列へ変換することを符号化（ エンコード） と呼びます
+
+// splitやjoinはruby同様に使える
