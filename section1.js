@@ -467,3 +467,16 @@ console.log(str2[2]); // => "列"
 // この文字からビット列へ変換することを符号化（ エンコード） と呼びます
 
 // splitやjoinはruby同様に使える
+
+
+// Unicodeについて
+// Jsはutf-16
+
+// unicode:文字のidのようなもの
+console.log("あ".codePointAt(0)); // => 12354
+
+
+// サロゲートペアでは、2つCode Unitの組み合わせ（合計4バイト）で
+// 1つの文字（1つのCode Point）を表現します。UTF - 16では、次の範囲をサロゲートペアに利用する領域としています。
+
+console.log("\uD867\uDE3D"); // => "𩸽"
