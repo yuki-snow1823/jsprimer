@@ -480,3 +480,28 @@ console.log("あ".codePointAt(0)); // => 12354
 // 1つの文字（1つのCode Point）を表現します。UTF - 16では、次の範囲をサロゲートペアに利用する領域としています。
 
 console.log("\uD867\uDE3D"); // => "𩸽"
+
+
+// ラッパーオブジェクト
+
+// ラップ：別の形で呼び出すこと
+
+// String#toUpperCaseを呼び出している
+"string".toUpperCase(); // => "STRING"
+
+// stringという文字列はStringオブジェクトのインスタンスではないため、メソッドが使えるのは不思議
+
+/*
+プリミティブ型のデータのうち、 
+真偽値（ Boolean）、 数値（ Number）、 文字列（ String）、 シンボル（ Symbol） 
+にはそれぞれ対応するオブジェクトが存在します。 
+たとえば、 文字列に対応するオブジェクトとして、 Stringオブジェクトがあります。
+*/
+
+// "input value"の値をラップしたStringのインスタンスを生成
+const str10 = new String("input value");
+// StringのインスタンスメソッドであるtoUpperCaseを呼び出す
+str10.toUpperCase(); // => "INPUT VALUE"
+
+
+// 自動的にラッパーオブジェクトが呼ばれるので、全てがオブジェクトであると言われるゆえん
