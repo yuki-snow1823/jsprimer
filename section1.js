@@ -582,3 +582,39 @@ var hello2 = function () {
 
 【関数内から特定の変数を参照し続けることで関数が状態を持てる仕組みのことを言います。】
 */
+
+
+// 関数とthis
+
+{/* <script>
+// 実行コンテキストは"Script"
+  console.log(this); // => window
+</script> */}
+
+{/* <script type="module">
+// 実行コンテキストは"Module"
+  console.log(this); // => undefined
+</script> */}
+
+// JavaScriptではオブジェクトのプロパティが関数である場合にそれをメソッドと言う
+
+// 疑似的な`this`の値の仕組み
+// 関数は引数として暗黙的に`this`の値を受け取るイメージ
+// function fn(暗黙的に渡されるthisの値, 仮引数) {
+//   console.log(this); // => 暗黙的に渡されるthisの値
+// }
+// // 暗黙的に`this`の値を引数として渡しているイメージ
+// fn(暗黙的に渡すthisの値, 引数);
+
+// たとえば、fn()のように関数を呼び出したとき、このfn関数呼び出しのベースオブジェクトはないため、thisはundefinedとなります。 一方、obj.method()のようにメソッドを呼び出したとき、このobj.methodメソッド呼び出しのベースオブジェクトはobjオブジェクトとなり、thisはobjとなります。
+
+// const obj1 = {
+//   obj2: {
+//     obj3: {
+//       method() {
+//         return this;
+//       }
+//     }
+//   }
+// };
+// `obj1.obj2.obj3.method`メソッドの`this`は`obj3`を参照
