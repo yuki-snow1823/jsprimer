@@ -656,3 +656,43 @@ const point = new Point(3, 4);
 // 4. `Point`のインスタンスである`point`の`x`と`y`プロパティには初期化された値が入る
 console.log(point.x); // => 3
 console.log(point.y); // => 4
+
+// [Note] クラス名は大文字ではじめる
+
+// メソッドの登録と使い方
+
+// class クラス {
+//   メソッド() {
+//     // ここでの`this`はベースオブジェクトを参照
+//   }
+// }
+
+// const インスタンス = new クラス();
+// // メソッド呼び出しのベースオブジェクト(`this`)は`インスタンス`となる
+// インスタンス.メソッド();
+
+// クラスに対して定義したメソッドは、クラスの各インスタンスから共有されるメソッドとなります。 このインスタンス間で共有されるメソッドのことをプロトタイプメソッドと呼びます。 また、プロトタイプメソッドはインスタンスから呼び出せるメソッドであるためインスタンスメソッドとも呼ばれます。
+
+// わかりやすい実例、インスタンスごとに結果が変わる
+
+class Counter {
+    constructor() {
+        this.count = 0;
+    }
+    // `increment`メソッドをクラスに定義する
+    increment() {
+        // `this`は`Counter`のインスタンスを参照する
+        this.count++;
+    }
+}
+const counterA = new Counter();
+const counterB = new Counter();
+// `counterA.increment()`のベースオブジェクトは`counterA`インスタンス
+counterA.increment();
+// 各インスタンスの持つプロパティ(状態)は異なる
+console.log(counterA.count); // => 1
+console.log(counterB.count); // => 0
+
+// ※コンストラクタの中にメソッドを書くこともできるけど、今のところ違いはわからない（要復習）
+
+
