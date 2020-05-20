@@ -694,5 +694,59 @@ console.log(counterA.count); // => 1
 console.log(counterB.count); // => 0
 
 // ※コンストラクタの中にメソッドを書くこともできるけど、今のところ違いはわからない（要復習）
+// static of(...items) { とかくと、newしなくても使える
 
+
+// クラスでは、プロパティの参照（getter）、プロパティへの代入（setter）時に呼び出される特殊なメソッドを定義できます。 このメソッドはプロパティのように振る舞うためアクセッサプロパティと呼ばれます。
+
+// class クラス {
+//     // getter
+//     get プロパティ名() {
+//         return 値;
+//     }
+//     // setter
+//     set プロパティ名(仮引数) {
+//         // setterの処理
+//     }
+// }
+// const インスタンス = new クラス();
+// インスタンス.プロパティ名; // getterが呼び出される
+// インスタンス.プロパティ名 = 値; // setterが呼び出される
+
+
+// getter,setterの使い方
+class NumberWrapper {
+    constructor(value) {
+        this._value = value;
+    }
+    // `_value`プロパティの値を返すgetter
+    get value() {
+        console.log("getter");
+        return this._value;
+    }
+    // `_value`プロパティに値を代入するsetter
+    set value(newValue) {
+        console.log("setter");
+        this._value = newValue;
+    }
+}
+
+const numberWrapper = new NumberWrapper(1);
+// "getter"とコンソールに表示される
+console.log(numberWrapper.value); // => 1
+// "setter"とコンソールに表示される
+numberWrapper.value = 42;
+// "getter"とコンソールに表示される
+console.log(numberWrapper.value); // => 42
+
+// クラスを定義しないとこんなことが起こる 
+// const array = [1, 2, 3, 4, 5];
+// // 要素数を減らすと、インデックス以降の要素が削除される
+// array.length = 2;
+// console.log(array.join(", ")); // => "1, 2"
+// // 要素数だけを増やしても、配列の中身は空要素が増えるだけ
+// array.length = 5;
+// console.log(array.join(", ")); // => "1, 2, , , "
+
+// プロトタイプオブジェクト;
 
