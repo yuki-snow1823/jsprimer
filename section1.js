@@ -618,3 +618,41 @@ var hello2 = function () {
 //   }
 // };
 // `obj1.obj2.obj3.method`メソッドの`this`は`obj3`を参照
+
+
+// クラス
+// クラスとは動作や状態を定義した構造です。
+// クラスからはインスタンスと呼ばれるオブジェクトを作成でき、
+// インスタンスはクラスに定義した動作を継承し、状態は動作によって変化します。
+
+// ES2015でクラスを表現するためのclass構文が導入されましたが、
+// このclass構文で定義したクラスは関数オブジェクトの一種です。
+
+class MyClass {
+  constructor() {
+    // コンストラクタ関数の処理
+    // インスタンス化されるときに自動的に呼び出される
+  }
+}
+
+// 式に入れることもできる
+const AnonymousClass = class {
+  constructor() {}
+};
+
+const myClass = new MyClass();
+
+class Point {
+  // コンストラクタ関数の仮引数として`x`と`y`を定義
+  constructor(x, y) {
+    // コンストラクタ関数における`this`はインスタンスを示すオブジェクト
+    // インスタンスの`x`と`y`プロパティにそれぞれ値を設定する
+    this.x = x;
+    this.y = y;
+  }
+}
+
+const point = new Point(3, 4);
+// 4. `Point`のインスタンスである`point`の`x`と`y`プロパティには初期化された値が入る
+console.log(point.x); // => 3
+console.log(point.y); // => 4
