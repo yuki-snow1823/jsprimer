@@ -1,67 +1,3 @@
-//初期値を設定できる。後から再代入できない
-const name = "yuki"; 
-//undefinedで初期化される、再代入するならこっち。
-let Name; 
-
-// プリミティブ型は一度決めたら変更できない。
-// オブジェクトは、 値そのものではなく値への参照を経由して操作されるため、 参照型のデータとも言う。
-// プリミティブ型の値や一部のオブジェクトは、 リテラルを使うことで簡単に定義できるようになっています。
-
-const word = "こんにちは" // ここの、こんにちはとかがそう。初期化不要。
-console.log(word)
-
-// 中身が空のオブジェクトを作成している
-// const obj = {};
-
-const obj = {
-  "key": "value"
-};
-// ドット記法 Railsでよく使った
-console.log(obj.key); // => "value"
-// ブラケット記法
-console.log(obj["key"]); // => "value"
-
-// 演算子の対象のことをオペランドという
-// 厳密等価演算子：データ型の一致も見る
-console.log(1 === 1); // => true
-console.log(1 === "1"); // => false
-
-// ※生成されたオブジェクトは異なる参照となる 厳密には異なる。
-const objA = {};
-const objB = {};
-console.log(objA === objB); // => false
-
-// 逆に、文字列を数値に変換してから比較
-console.log(1 == "1"); // => true
-// "01"を数値にすると`1`となる
-console.log(1 == "01"); // => true
-
-// 便利な三項演算子
-const str = "森森木森森";
-if (str.includes("木")) {
-  console.log("#42","木を見つけました");
-}
-
-// not演算子：!
-console.log(!false); // => true
-
-// 暗黙的な型変換
-// 暗黙的な型変換が行われ、数値の加算として計算される
-1 + true; // => 2
-// 次のように暗黙的に変換されてから計算される
-1 + 1; 
-
-// 暗黙的な型変換は、二つのオブジェクトのデータが異なる型である場合に行われる
-console.log(1 == "1"); // => true
-console.log(0 == false); // => true
-console.log(10 == ["10"]); // => true
-// ※ 逆に === を使えばそれを回避することができる
-
-// さらに、クラスを揃えれば違うデータ型でも合成できる
-"文字列と" + String(Symbol("シンボルの説明")); // => "文字列とSymbol(シンボルの説明)"
-// Number型と互換性のない性質のデータをNumber型へ変換した結果はNaNとなる
-
-
 // 関数と宣言
 // 関数宣言
 // function 関数名(仮引数1, 仮引数2) {
@@ -750,3 +686,53 @@ console.log(numberWrapper.value); // => 42
 
 // プロトタイプオブジェクト;
 
+
+// 【例外処理】
+// try...catch構文は例外が発生しうるブロックをマークし、例外が発生したときの処理を記述するための構文です。
+// try...catch構文のtryブロック内で例外が発生すると、tryブロック内のそれ以降の処理は実行されず、catch節に処理が移行します。
+
+try {
+  console.log("try節:この行は実行されます");
+  // 未定義の関数を呼び出してReferenceError例外が発生する
+  undefinedFunction();
+  // 例外が発生したため、この行は実行されません
+} catch (error) {
+  // 例外が発生したあとはこのブロックが実行される
+  console.log("catch節:この行は実行されます");
+  console.log(error instanceof ReferenceError); // => true
+  console.log(error.message); // => "undefinedFunction is not defined"
+} finally {
+  // このブロックは例外の発生に関係なく必ず実行される
+  console.log("finally節:この行は実行されます"); 
+}
+
+// throwで例外を作れる
+// ErrorオブジェクトのインスタンスはErrorをnewして作成します。
+// コンストラクタの第一引数には、エラーメッセージとなる文字列を渡します。
+// 渡したエラーメッセージはError#messageプロパティに格納されます。
+
+// 渡された数値が0以上ではない場合に例外を投げる関数
+function assertPositiveNumber(num) {
+    if (num < 0) {
+        throw new Error(`${num} is not positive.`);
+    }
+}
+
+try {
+    // 0未満の値を渡しているので、関数が例外を投げる
+    assertPositiveNumber(-1);
+} catch (error) {
+    console.log(error instanceof Error); // => true
+    console.log(error.message); // => "-1 is not positive."
+}
+
+// TypeErrorは値が期待される型ではない場合のエラーです。
+// ReferenceErrorは存在しない変数や関数などの識別子が参照された場合のエラーです。
+
+
+function fn() {
+  console.log("メッセージ");
+  console.error("エラーメッセージ");
+}
+
+fn();
