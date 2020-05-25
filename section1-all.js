@@ -736,3 +736,41 @@ function fn() {
 }
 
 fn();
+
+
+
+
+// 非同期処理:コールバック/Promise/Async Function
+// 多くのプログラミング言語にはコードの評価の仕方として、同期処理（sync）と非同期処理（async）という大きな分類があります。
+// 一方、同期的にブロックする処理が行われていた場合には問題があります。 同期処理ではひとつの処理が終わるまで、次の処理へ進むことができないためです。
+
+// 指定した`timeout`ミリ秒経過するまで同期的にブロックする関数
+function blockTime(timeout) { 
+    const startTime = Date.now();
+    // `timeout`ミリ秒経過するまで無限ループをする
+    while (true) {
+        const diffTime = Date.now() - startTime;
+        if (diffTime >= timeout) {
+            return; // 指定時間経過したら関数の実行を終了
+        }
+    }
+}
+console.log("処理を開始");
+blockTime(1000); // 他の処理を1000ミリ秒（1秒間）ブロックする
+console.log("この行が呼ばれるまで処理が1秒間ブロックされる");
+
+// 先ほどの例では1秒間も処理をブロックしているため、1秒間スクロールなどの操作が効かないといった悪影響がでます。
+
+// JavaScriptにおいて非同期処理の代表的な関数としてsetTimeout関数があります。 setTimeout関数はdelayミリ秒後に、コールバック関数を呼び出すようにタイマーへ登録する非同期処理です。
+
+// setTimeout(コールバック関数, delay);
+
+// 非同期のエラーはキャッチできない
+try {
+  setTimeout(() => {
+    throw new Error("非同期的なエラー");
+  }, 10);
+} catch (error) {
+  // 非同期エラーはキャッチできないため、この行は実行されません
+}
+console.log("この行は実行されます");
