@@ -1,94 +1,11 @@
-// 関数と宣言
-// 関数宣言
-// function 関数名(仮引数1, 仮引数2) {
-  // 関数が呼び出されたときの処理
-  // ...
-  // return 関数の返り値;
-// }
-// 関数呼び出し
-// const 関数の結果 = 関数名(引数1, 引数2);
-// console.log(関数の結果); // => 関数の返り値
-
-// Nuxtのアプリでもよく使った方法
-// デフォルト値を与えることができる
-defaultOne = "デフォルト値"
-defaultVal = "デフォルト値２"
-function 関数名(num = defaultOne, val = defaultVal) {
-  return num,val
-}
-
-// 引数が多いとはみ出たものは無視される
-// 便利なスプレッド構文
-// fn(...array);
-// 次のように書いたのと同じ意味
-// fn(array[0], array[1], array[2]);
-
-// こんな書き方もできる
-// 第1引数のオブジェクトから`id`プロパティを変数`id`として定義する
-function printUserId({
-  id
-}) {
-  console.log("#95",id); // => 42
-}
-const user = {
-  id: 42
-};
-printUserId(user);
-// 考え方として関数はオブジェクトの一種
-// 再帰的な呼び出し
-
-// factorialは関数の外から呼び出せる名前
-// innerFactは関数の外から呼び出せない名前
-const factorial = function innerFact(n) {
-  if (n === 0) {
-    return 1;
-  }
-  // innerFactを再帰的に呼び出している
-  return n * innerFact(n - 1);
-};
-console.log(factorial(3)); // => 6
-
-
-// 重要（アロー関数）
-// Arrow Functionを使った関数定義
-// const 関数名 = () => {
-  // 関数を呼び出したときの処理
-  // ...
-  // return 関数の返す値;
-// };
-// // const fnC = x => {
-//   /* 仮引数が1つのみのときは()を省略可能 */ };
-
-
-// コールバック関数や高階関数など【重要な言葉の意味】
-// 関数はファーストクラスであるため、 その場で作った匿名関数を関数の引数（値） として渡すことができます。
-// 引数として渡される関数のことをコールバック関数と呼びます。 
-// 一方、 コールバック関数を引数として使う関数やメソッドのことを高階関数と呼びます。
-
-// function 高階関数(コールバック関数) {
-//   コールバック関数();
-// }
-
-
-// 少し難しいがメソッドにすることもできる
-// const obj = {
-//   method: function () {
-//     return "this is method";
-//   }
-// };
-// console.log(obj.method());
-// => "this is method" オブジェクトのメソッド
-
-
 // 式と文
 // 関数式をread変数へ代入
-const read = function () {};
+const read = function() {};
 // 文：if文とブロック文の組み合わせ
 if (true) {
-  console.log("#152","文1");
+  console.log("#152", "文1");
   console.log("文2");
 }
-
 
 // 条件分岐
 if (true) {
@@ -113,7 +30,6 @@ getECMAScriptName("ES6"); // => "ECMAScript 2015"
 
 // break文の多用があるなら、書き換えるべき方法を考える
 
-
 // ループと反復処理
 // while文で書かないほうがいいことも多い、安直に使わないこと
 // 最初に必ず実行文を処理して欲しい場合
@@ -121,25 +37,24 @@ getECMAScriptName("ES6"); // => "ECMAScript 2015"
 //   実行する文;
 // } while (条件式);
 
-
 // 初期化、条件、条件まで行う処理
-total = 0
+total = 0;
 for (let i = 0; i < 10; i++) {
   total += i + 1; // 1から10の値をtotalに加算している
 }
 console.log(total); // => 55
 
-currentValue = 0
+currentValue = 0;
 const array = [1, 2, 3];
-array.forEach(currentValue => {
+array.forEach((currentValue) => {
   // 配列の要素ごとに呼び出される処理
-  currentValue += 1
+  currentValue += 1;
 });
 
-console.log(currentValue)
+console.log(currentValue);
 // ここでいうところの、currentValueがrubyのeachでいうブロック変数みたいなもの
 
-num = 6
+num = 6;
 // 引数の`num`が偶数ならtrueを返す
 function isEven(num) {
   return num % 2 === 0;
@@ -161,7 +76,7 @@ function isEvenIncluded(numbers) {
 
 const array2 = [1, 5, 10, 15, 20];
 console.log(isEvenIncluded(array2)); // => true
-console.log(isEven(2)) // true
+console.log(isEven(2)); // true
 
 // 見つけた瞬間処理が終わる
 function isEven(num) {
@@ -195,7 +110,6 @@ function filterEven(numbers) {
 const array3 = [1, 5, 10, 15, 20];
 console.log(filterEven(array3)); // => [10, 20]
 
-
 // 【重要】trueじゃない要素を省く場合の処理
 function isEven(num) {
   return num % 2 === 0;
@@ -205,14 +119,13 @@ console.log(array4.filter(isEven)); // => [10, 20]
 
 // 注意
 // 先ほどのfor文やforEachメソッドで数値の合計を返すsum関数の実装は、
-// constではなくletを利用していました。 
+// constではなくletを利用していました。
 // なぜなら、constは再代入できない変数を宣言するキーワードであるためです。：これはよくわからない。
 // オブジェクトはキーと値のセット。
 // const obj = {
 //   name: "Yuki"
 //   // key+値= プロパティ
 // }
-
 
 // 省略記法
 // const name = "名前";
@@ -230,12 +143,9 @@ console.log(array4.filter(isEven)); // => [10, 20]
 
 const languages = {
   ja: "日本語",
-  en: "英語"
+  en: "英語",
 };
-const {
-  ja,
-  en
-} = languages;
+const { ja, en } = languages;
 console.log(ja); // => "日本語"
 console.log(en); // => "英語"
 
@@ -245,7 +155,7 @@ console.log(en); // => "英語"
 // プロパティの削除について
 const obj2 = {
   key1: "value1",
-  key2: "value2"
+  key2: "value2",
 };
 // key1プロパティを削除
 delete obj2.key1;
@@ -259,9 +169,9 @@ console.log(obj3.toString()); // => "[object Object]"
 
 // 列挙した値を配列として返す
 const obj4 = {
-  "one": 1,
-  "two": 2,
-  "three": 3
+  one: 1,
+  two: 2,
+  three: 3,
 };
 // `Object.keys`はキーの列挙した配列を返す
 console.log(Object.keys(obj4)); // => ["one", "two", "three"]
@@ -272,10 +182,10 @@ console.log(Object.entries(obj4)); // => [["one", 1], ["two", 2], ["three", 3]]
 
 // オブジェクトの合成
 const objectA = {
-  a: "a"
+  a: "a",
 };
 const objectB = {
-  b: "b"
+  b: "b",
 };
 const merged = Object.assign({}, objectA, objectB);
 console.log(merged); // => { a: "a", b: "b" }
@@ -283,10 +193,10 @@ console.log(merged); // => { a: "a", b: "b" }
 // ※プロパティが重複した場合
 // `version`のプロパティ名が被っている
 const objectC = {
-  version: "a"
+  version: "a",
 };
 const objectD = {
-  version: "b"
+  version: "b",
 };
 // const merged = Object.assign({}, objectC, objectD);
 // 後ろにある`objectB`のプロパティで上書きされる
@@ -295,15 +205,15 @@ const objectD = {
 // 便利なスプレッド構文も使える
 // `version`のプロパティ名が被っている
 const objectE = {
-  version: "a"
+  version: "a",
 };
 const objectF = {
-  version: "b"
+  version: "b",
 };
 const merged2 = {
   ...objectE,
   ...objectF,
-  other: "other"
+  other: "other",
 };
 // 後ろにある`objectB`のプロパティで上書きされる
 console.log(merged2); // => { version: "b", other: "other" }
@@ -314,13 +224,12 @@ const shallowClone = (obj) => {
   return Object.assign({}, obj);
 };
 const obj7 = {
-  a: "a"
+  a: "a",
 };
 const cloneObj = shallowClone(obj7);
 console.log(cloneObj); // => { a: "a" }
 // オブジェクトを複製しているので、異なるオブジェクトとなる
 console.log(obj7 === cloneObj); // => false
-
 
 // プロトタイプメソッド
 
@@ -333,7 +242,6 @@ console.log(obj7 === cloneObj); // => false
 // つまり、インスタンスからプロトタイプメソッドを呼び出せるということ。
 // インスタンスとプロトタイプオブジェクトで同じ名前のメソッドがある場合には、 インスタンスのメソッドが優先されます。
 // →再定義できる
-
 
 // 配列
 const array8 = ["one", "two", "three"];
@@ -360,16 +268,21 @@ console.log(array11.indexOf("JS")); // => -1
 
 // 【オブジェクトは持っている要素が同じでも違うものと考えるから、検索に引っかからない例】
 const obj10 = {
-  key: "value"
+  key: "value",
 };
 const array12 = ["A", "B", obj10];
-console.log(array12.indexOf({
-  key: "value"
-})); // => -1
+console.log(
+  array12.indexOf({
+    key: "value",
+  })
+); // => -1
 // リテラルは新しいオブジェクトを作るため、異なるオブジェクトだと判定される
-console.log(obj10 === {
-  key: "value"
-}); // => false
+console.log(
+  obj10 ===
+    {
+      key: "value",
+    }
+); // => false
 // 等価のオブジェクトを検索してインデックスを返す
 console.log(array12.indexOf(obj10)); // => 2
 
@@ -379,7 +292,6 @@ console.log(array12.indexOf(obj10)); // => 2
 // console.log(array13.length); // => 3
 // // `const`で宣言された変数には再代入できない
 // array13 = []; // TypeError: invalid assignment to const `array' が発生
-
 
 // 文字列
 
@@ -404,19 +316,16 @@ console.log(str2[2]); // => "列"
 
 // splitやjoinはruby同様に使える
 
-
 // Unicodeについて
 // Jsはutf-16
 
 // unicode:文字のidのようなもの
 console.log("あ".codePointAt(0)); // => 12354
 
-
 // サロゲートペアでは、2つCode Unitの組み合わせ（合計4バイト）で
 // 1つの文字（1つのCode Point）を表現します。UTF - 16では、次の範囲をサロゲートペアに利用する領域としています。
 
 console.log("\uD867\uDE3D"); // => "𩸽"
-
 
 // ラッパーオブジェクト
 
@@ -439,9 +348,7 @@ const str10 = new String("input value");
 // StringのインスタンスメソッドであるtoUpperCaseを呼び出す
 str10.toUpperCase(); // => "INPUT VALUE"
 
-
 // 自動的にラッパーオブジェクトが呼ばれるので、全てがオブジェクトであると言われるゆえん
-
 
 // スコープ
 
@@ -458,7 +365,8 @@ console.log(arg); // => ReferenceError: arg is not defined
 // ネストはOK
 {
   // OUTERブロックスコープ
-  const x2 = "x"; {
+  const x2 = "x";
+  {
     // INNERブロックスコープからOUTERブロックスコープの変数を参照できる
     console.log(x2); // => "x"
   }
@@ -467,7 +375,8 @@ console.log(arg); // => ReferenceError: arg is not defined
 // 参照する場所に関して
 {
   // OUTERブロックスコープ
-  const x3 = "outer"; {
+  const x3 = "outer";
+  {
     // INNERブロックスコープ
     const x3 = "inner";
     // 現在のスコープ(INNERブロックスコープ)にある`x`を参照する
@@ -490,7 +399,6 @@ console.log(arg); // => ReferenceError: arg is not defined
 関数のスコープ内では影響範囲がその関数の中だけにとどまります。
 */
 
-
 // var宣言より前に参照してもエラーにならない
 console.log(x4); // => undefined
 var x4 = "varのx";
@@ -499,7 +407,7 @@ var x4 = "varのx";
 // `hello`変数は巻き上げられ、暗黙的に`undefined`となる
 hello2(); // => TypeError: hello is not a function
 // `hello`変数へ関数を代入している
-var hello2 = function () {
+var hello2 = function() {
   return "Hello";
 };
 
@@ -519,18 +427,21 @@ var hello2 = function () {
 【関数内から特定の変数を参照し続けることで関数が状態を持てる仕組みのことを言います。】
 */
 
-
 // 関数とthis
 
-{/* <script>
+{
+  /* <script>
 // 実行コンテキストは"Script"
   console.log(this); // => window
-</script> */}
+</script> */
+}
 
-{/* <script type="module">
+{
+  /* <script type="module">
 // 実行コンテキストは"Module"
   console.log(this); // => undefined
-</script> */}
+</script> */
+}
 
 // JavaScriptではオブジェクトのプロパティが関数である場合にそれをメソッドと言う
 
@@ -554,7 +465,6 @@ var hello2 = function () {
 //   }
 // };
 // `obj1.obj2.obj3.method`メソッドの`this`は`obj3`を参照
-
 
 // クラス
 // クラスとは動作や状態を定義した構造です。
@@ -612,14 +522,14 @@ console.log(point.y); // => 4
 // わかりやすい実例、インスタンスごとに結果が変わる
 
 class Counter {
-    constructor() {
-        this.count = 0;
-    }
-    // `increment`メソッドをクラスに定義する
-    increment() {
-        // `this`は`Counter`のインスタンスを参照する
-        this.count++;
-    }
+  constructor() {
+    this.count = 0;
+  }
+  // `increment`メソッドをクラスに定義する
+  increment() {
+    // `this`は`Counter`のインスタンスを参照する
+    this.count++;
+  }
 }
 const counterA = new Counter();
 const counterB = new Counter();
@@ -631,7 +541,6 @@ console.log(counterB.count); // => 0
 
 // ※コンストラクタの中にメソッドを書くこともできるけど、今のところ違いはわからない（要復習）
 // static of(...items) { とかくと、newしなくても使える
-
 
 // クラスでは、プロパティの参照（getter）、プロパティへの代入（setter）時に呼び出される特殊なメソッドを定義できます。 このメソッドはプロパティのように振る舞うためアクセッサプロパティと呼ばれます。
 
@@ -649,22 +558,21 @@ console.log(counterB.count); // => 0
 // インスタンス.プロパティ名; // getterが呼び出される
 // インスタンス.プロパティ名 = 値; // setterが呼び出される
 
-
 // getter,setterの使い方
 class NumberWrapper {
-    constructor(value) {
-        this._value = value;
-    }
-    // `_value`プロパティの値を返すgetter
-    get value() {
-        console.log("getter");
-        return this._value;
-    }
-    // `_value`プロパティに値を代入するsetter
-    set value(newValue) {
-        console.log("setter");
-        this._value = newValue;
-    }
+  constructor(value) {
+    this._value = value;
+  }
+  // `_value`プロパティの値を返すgetter
+  get value() {
+    console.log("getter");
+    return this._value;
+  }
+  // `_value`プロパティに値を代入するsetter
+  set value(newValue) {
+    console.log("setter");
+    this._value = newValue;
+  }
 }
 
 const numberWrapper = new NumberWrapper(1);
@@ -675,7 +583,7 @@ numberWrapper.value = 42;
 // "getter"とコンソールに表示される
 console.log(numberWrapper.value); // => 42
 
-// クラスを定義しないとこんなことが起こる 
+// クラスを定義しないとこんなことが起こる
 // const array = [1, 2, 3, 4, 5];
 // // 要素数を減らすと、インデックス以降の要素が削除される
 // array.length = 2;
@@ -685,7 +593,6 @@ console.log(numberWrapper.value); // => 42
 // console.log(array.join(", ")); // => "1, 2, , , "
 
 // プロトタイプオブジェクト;
-
 
 // 【例外処理】
 // try...catch構文は例外が発生しうるブロックをマークし、例外が発生したときの処理を記述するための構文です。
@@ -703,7 +610,7 @@ try {
   console.log(error.message); // => "undefinedFunction is not defined"
 } finally {
   // このブロックは例外の発生に関係なく必ず実行される
-  console.log("finally節:この行は実行されます"); 
+  console.log("finally節:この行は実行されます");
 }
 
 // throwで例外を作れる
@@ -713,22 +620,21 @@ try {
 
 // 渡された数値が0以上ではない場合に例外を投げる関数
 function assertPositiveNumber(num) {
-    if (num < 0) {
-        throw new Error(`${num} is not positive.`);
-    }
+  if (num < 0) {
+    throw new Error(`${num} is not positive.`);
+  }
 }
 
 try {
-    // 0未満の値を渡しているので、関数が例外を投げる
-    assertPositiveNumber(-1);
+  // 0未満の値を渡しているので、関数が例外を投げる
+  assertPositiveNumber(-1);
 } catch (error) {
-    console.log(error instanceof Error); // => true
-    console.log(error.message); // => "-1 is not positive."
+  console.log(error instanceof Error); // => true
+  console.log(error.message); // => "-1 is not positive."
 }
 
 // TypeErrorは値が期待される型ではない場合のエラーです。
 // ReferenceErrorは存在しない変数や関数などの識別子が参照された場合のエラーです。
-
 
 function fn() {
   console.log("メッセージ");
@@ -737,23 +643,20 @@ function fn() {
 
 fn();
 
-
-
-
 // 非同期処理:コールバック/Promise/Async Function
 // 多くのプログラミング言語にはコードの評価の仕方として、同期処理（sync）と非同期処理（async）という大きな分類があります。
 // 一方、同期的にブロックする処理が行われていた場合には問題があります。 同期処理ではひとつの処理が終わるまで、次の処理へ進むことができないためです。
 
 // 指定した`timeout`ミリ秒経過するまで同期的にブロックする関数
-function blockTime(timeout) { 
-    const startTime = Date.now();
-    // `timeout`ミリ秒経過するまで無限ループをする
-    while (true) {
-        const diffTime = Date.now() - startTime;
-        if (diffTime >= timeout) {
-            return; // 指定時間経過したら関数の実行を終了
-        }
+function blockTime(timeout) {
+  const startTime = Date.now();
+  // `timeout`ミリ秒経過するまで無限ループをする
+  while (true) {
+    const diffTime = Date.now() - startTime;
+    if (diffTime >= timeout) {
+      return; // 指定時間経過したら関数の実行を終了
     }
+  }
 }
 console.log("処理を開始");
 blockTime(1000); // 他の処理を1000ミリ秒（1秒間）ブロックする
