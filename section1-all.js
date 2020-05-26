@@ -677,3 +677,39 @@ try {
   // 非同期エラーはキャッチできないため、この行は実行されません
 }
 console.log("この行は実行されます");
+
+// Promise
+// PromiseはES2015で導入された非同期処理の結果を表現するビルトインオブジェクトです。
+
+// 元々はこう
+asyncTask((error, result) => {
+  if (error) {
+    // 非同期処理が失敗したときの処理
+  } else {
+    // 非同期処理が成功したときの処理
+  }
+});
+
+// Promiseインスタンスの作り方
+const executor = (resolve, reject) => {
+  // 非同期の処理が成功したときはresolveを呼ぶ
+  // 非同期の処理が失敗したときはrejectを呼ぶ
+};
+const promise = new Promise(executor);
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve();
+    resolve(); // 二度目以降のresolveやrejectは無視される
+  }, 16);
+});
+promise.then(
+  () => {
+    console.log("最初のresolve時に一度だけ呼ばれる");
+  },
+  (error) => {
+    // この行は呼び出されない
+  }
+);
+
+// Async Function
