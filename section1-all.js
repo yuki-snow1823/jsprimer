@@ -704,3 +704,35 @@ async function asyncMain() {
 asyncMain().catch((error) => {
   // すでにtry...catchされているため、この行は実行されません
 });
+
+
+// map
+const map = new Map();
+// 新しい要素の追加
+map.set("key", "value1");
+console.log(map.size); // => 1
+console.log(map.get("key")); // => "value1"
+// 要素の上書き
+map.set("key", "value2");
+console.log(map.get("key")); // => "value2"
+// キーの存在確認
+console.log(map.has("key")); // => true
+console.log(map.has("foo")); // => false
+
+// 中身を排出するメソッド
+const map = new Map([["key1", "value1"], ["key2", "value2"]]);
+const results = [];
+map.forEach((value, key) => {
+    results.push(`${key}:${value}`);
+});
+console.log(results); // => ["key1:value1","key2:value2"]
+
+
+//  Mapオブジェクトとは. ES2015(ES6)から導入された、キーと値の組み合わせを保持することができるオブジェクト
+
+// 次のコードではiterableオブジェクトである配列を初期値として渡しています。 また、Setでは重複する同じ値を持たないことを保証するため、同じ値は1つのみ格納されます。
+
+// "value2"が重複するため、片方は無視される
+const set = new Set(["value1", "value2", "value2"]);
+// セットのサイズは2になる
+console.log(set.size); // => 2
