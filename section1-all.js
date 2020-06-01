@@ -645,3 +645,27 @@ console.log(results); // => ["key1:value1","key2:value2"]
 const set = new Set(["value1", "value2", "value2"]);
 // セットのサイズは2になる
 console.log(set.size); // => 2
+
+
+// json
+// JSONはJavaScript Object Notationの略で、JavaScriptのオブジェクトリテラルをベースに作られた軽量なデータフォーマットです。 JSONの仕様はECMA-404として標準化されています。 JSONは、人間にとって読み書きが容易で、マシンにとっても簡単にパースや生成を行える形式になっています。 そのため、多くのプログラミング言語がJSONを扱う機能を備えています。
+
+// JSONはダブルクォートのみを許容するため、シングルクォートでJSON文字列を記述
+const json = '{ "id": 1, "name": "js-primer" }';
+const obj = JSON.parse(json);
+console.log(obj.id); // => 1
+console.log(obj.name); // => "js-primer"
+
+// jsonにするときはこう
+const obj = { id: 1, name: "js-primer", bio: null };
+console.log(JSON.stringify(obj)); // => '{"id":1,"name":"js-primer","bio":null}'
+
+// 中身がなかった時の挙動も操作できる
+const obj = { id: 1, name: "js-primer", bio: null };
+const replacer = (key, value) => {
+    if (value === null) {
+        return undefined;
+    }
+    return value;
+};
+console.log(JSON.stringify(obj, replacer)); // => '{"id":1,"name":"js-primer"}'
