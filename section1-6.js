@@ -44,3 +44,25 @@ const obj = {
 console.log(obj.toString === Object.prototype.toString); // => true
 // インスタンスからプロトタイプメソッドを呼び出せる
 console.log(obj.toString()); // => "[object Object]"
+
+
+// インスタンスのメソッドはプロトタイプメソッドよりも優先される
+// 次のコードでは、ObjectのインスタンスであるcustomObjectにtoStringメソッドを定義しています。 実行してみると、プロトタイプメソッドよりも優先してインスタンスのメソッドが呼び出されていることがわかります。
+
+// オブジェクトのインスタンスにtoStringメソッドを定義
+const customObject = {
+    toString() {
+        return "custom value";
+    }
+};
+console.log(customObject.toString()); // => "custom value"
+
+
+const obj = {};
+// `obj`というオブジェクト自体に`toString`メソッドが定義されているわけではない
+
+//　★あくまでも、そのプロトタイプオブジェクトが持っている
+ 
+console.log(obj.hasOwnProperty("toString")); // => false
+// `in`演算子は指定されたプロパティ名が見つかるまで親をたどるため、`Object.prototype`まで見にいく
+console.log("toString" in obj); // => true

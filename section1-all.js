@@ -1,6 +1,4 @@
 
-
-
 // 配列
 const array8 = ["one", "two", "three"];
 // `array`にはインデックスが100の要素は定義されていない
