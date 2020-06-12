@@ -496,3 +496,22 @@ const replacer = (key, value) => {
     return value;
 };
 console.log(JSON.stringify(obj, replacer)); // => '{"id":1,"name":"js-primer"}'
+
+
+// UTCにおける"2006年1月2日15時04分05秒999"を表すISO 8601形式の文字列
+const inUTC = new Date("2006-01-02T15:04:05.999Z");
+console.log(inUTC.toISOString()); // => "2006-01-02T15:04:05.999Z"
+
+// 文字列の補填
+const str1 = '5';
+console.log(str1.padStart(2, '0'));
+// expected output: "05"
+
+// そのため、JavaScriptにおける日付・時刻の処理は、標準のDateではなくライブラリを使うことが一般的になっています。 代表的なライブラリとしては、moment.jsやjs-joda、date-fnsなどがあります。
+
+// moment.jsで現在時刻のmomentオブジェクトを作る
+const now = moment();
+// addメソッドで10分進める
+const future = now.add(10, "minutes");
+// formatメソッドで任意の書式の文字列に変換する
+console.log(future.format("YYYY/MM/DD"));
