@@ -459,3 +459,13 @@ const now = moment();
 const future = now.add(10, "minutes");
 // formatメソッドで任意の書式の文字列に変換する
 console.log(future.format("YYYY/MM/DD"));
+
+
+// 【Math】
+// minからmaxまでの乱数を返す関数
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+// 1以上5未満の浮動小数点数を返す
+console.log(getRandom(1, 5));
+// Mathはインスタンス化できない
